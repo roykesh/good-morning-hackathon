@@ -1,12 +1,29 @@
 const render = new Renderer()
-const dummy = new Dummy()
+
+
+
+const getSong = function(){
+    $.get(`/music`, function(songData){
+        render.musicRenderer(songData)
+    })
+}
+
+const getNews = function(){
+    $.get(`/article`, function(newsData){
+        render.newsRenderer(newsData)
+    })
+}
+
+const getMap = function(){
+    $.get(`/map`, function (mapData){
+        render.mapRenderer(mapData)
+    })
+}
 
 const loadPage = () => {
-    // access all dummy data
-    // render.renderAll(dummyData)
-    render.musicRenderer(dummy.songData)
-    render.mapRenderer(dummy.mapData)
-    render.newsRenderer(dummy.articleData)
+    getSong()
+    getMap()
+    getNews()
 }
 
 loadPage()
