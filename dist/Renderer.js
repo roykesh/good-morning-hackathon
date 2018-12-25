@@ -26,12 +26,12 @@ class Renderer {
     }
 
     // Main renderer
-    renderAll() {
-        this.musicRenderer(songData)
-        this.mapRenderer(mapData)
-        this.newsRenderer(articleData)
+    // renderAll() {
+    //     this.musicRenderer(songData)
+    //     this.mapRenderer(mapData)
+    //     this.newsRenderer(articleData)
         // this.weatherRenderer()
-    }
+        // }
 
     // Weather renderer
     // weatherRenderer(allCityData) {
