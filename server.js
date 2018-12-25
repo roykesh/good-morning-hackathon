@@ -1,10 +1,14 @@
 // Server setup
+
 const express = require('express')
 const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
-const api = require('./server/routes/musicAPI')
 
+
+const commuteAPI = require('./server/routes/commuteAPI')
+const musicAPI = require('./server/routes/musicAPI')
+const newsAPI = require('./server/routes/newsAPI')
 
 
 app.use(express.static(path.join(__dirname, 'dist')))
@@ -19,8 +23,11 @@ app.use(bodyParser.urlencoded({
 // mongoose.connect('mongodb://localhost/weatherDB', {
 //     useNewUrlParser: true
 // })
+]
+app.use('/', commuteAPI)
+app.use('/', musicAPI)
+app.use('/', newsAPI)
 
-app.use('/', api)
 
 
 
