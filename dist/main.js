@@ -1,8 +1,14 @@
 const render = new Renderer()
 
 
+const dummyData = {
+    songOne:`D5Y11hwjMNs`, 
+  songTwo:`1rCgM07uzq4`, 
+  songThree:`nC9dQOnUyao`
+    
+  }
 const getSong = function () {
-    $.get(`/music`, function (songData) {
+    $.get(`/music/${dummyData.songTwo}`, function (songData) {
 
         render.musicRenderer(songData)
     })

@@ -15,14 +15,36 @@
 <body>
 
     <h1>G'Day</h1>
+ 
+    <script type="text/javascript">
+        var tag = document.createElement('script');
+        tag.id = 'iframe-demo';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        function onYouTubeIframeAPIReady() {
+            var player;
+            player = new YT.Player('player', {
+                videoId: 'M7lc1UVf-VE',
+                playerVars: { 'autoplay': 1, 'controls': 0 },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
+                }
+            });
+        }
+        </script>
 
     <div id="card-container"></div>
 
     <script id="music-template" type="text/x-handlebars-template">
         <div class="card" id="music">
-                <div id="songName">{{name}}</div>
+                <div id="songName">{{title}}</div>
                 <div id="artist">{{artist}}</div>
-                <iframe class="thumbnail" src="{{url}}"></iframe>
+                <iframe id="player" class="thumbnail" type="text/html" src="http://www.youtube.com/embed/{{id}}?enablejsapi=1&origin=http://example.com"></iframe>
             </div>
         </script>
 
@@ -50,7 +72,6 @@
     <script src="TBDManager.js"></script>
     <script src="main.js"></script>
 
-    
 </body>
 
 </html>
