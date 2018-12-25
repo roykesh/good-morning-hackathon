@@ -1,0 +1,28 @@
+{
+  "name": "good-morning-hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roykesh/good-morning-hackathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roykesh/good-morning-hackathon/issues"
+  },
+  "homepage": "https://github.com/roykesh/good-morning-hackathon#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "handlebars": "^4.0.12",
+    "jquery": "^3.3.1",
+    "moment": "^2.23.0",
+    "mongoose": "^5.4.0",
+    "request": "^2.88.0"
+  }
+}
