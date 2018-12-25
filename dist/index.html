@@ -10,42 +10,41 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
         crossorigin="anonymous">
-    <script src="./handlebars/dist/handlebars.js"></script>
-    <script src="./jquery/dist/jquery.js"></script>
 </head>
 
 <body>
 
     <h1>G'Day</h1>
-    
+
     <div id="card-container"></div>
 
     <script id="music-template" type="text/x-handlebars-template">
         <div class="card" id="music">
-            <h2 id="songName">{{name}}</h2>
-            <h3 id="artist">{{artist}}</h3>
-            <iframe class="thumbnail" src="{{url}}"></iframe>
-        </div>
-    </script>
-   
+                <div id="songName">{{name}}</div>
+                <div id="artist">{{artist}}</div>
+                <iframe class="thumbnail" src="{{url}}"></iframe>
+            </div>
+        </script>
+
     <script id="commute-template" type="text/x-handlebars-template">
         <div class="card" id="commute">
-            <h2 id="time">from {{currentLocation}} to {{dest}}</h2>
-            <h3 id="transMethod">will take {{timeToDest}} minutes via {{transMeth}}</h3>
-            <iframe src="{{url}}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-    </script>
-   
+                <div id="time">from {{currentLocation}} to {{dest}}</div>
+                <div id="transMethod">will take {{timeToDest}} minutes via {{transMeth}}</div>
+                <iframe class="thumbnail" src="{{url}}" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </script>
+
     <script id="news-template" type="text/x-handlebars-template">
         <div class="card" id="news">
-            <h2 id="title">{{title}}</h2>
-            <h3 id="text">{{snippet}}</h3>
-            <iframe class="thumbnail" src="{{thumb}}"></iframe>
-        </div>
-    </script>
+                <div id="title">{{title}}</div>
+                <div id="text">{{snippet}}</div>
+                <iframe class="thumbnail" src="{{thumb}}"></iframe>
+            </div>
+        </script>
 
-    <script src="./moment/moment.js"></script>
-    <script src="./jquery/dist/jquery.js"></script>
+    <script src="../node_modules/moment/moment.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="Renderer.js"></script>
     <script src="TBDManager.js"></script>
     <script src="dummy.js"></script>

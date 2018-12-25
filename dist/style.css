@@ -12,7 +12,8 @@ body {
     box-shadow: 3px 3px 3px #777;
     display: grid;
     grid-template-areas:
-        “a t” “b t”
+        "a t"
+        "b t";
 }
 
 .thumbnail {
