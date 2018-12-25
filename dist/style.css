@@ -26,7 +26,7 @@ body {
 
 #songName {
     grid-area: a;
-
+    
 }
 
 #artist {
@@ -47,4 +47,42 @@ body {
 
 #text {
     grid-area: b
+}
+
+#articleCard>p {
+    margin: 0;
+}
+#articleCard {
+    padding: 10px;
+    width: 90%;
+    border: 1px solid grey;
+    /* margin-bottom: 5px; */
+    box-shadow: 3px 3px 3px #777;
+    display: grid;
+    grid-template-areas:
+        "at at"
+        "ad ath"
+        "as ath";
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: 3fr 2fr 5fr;
+}
+#articleTitle {
+    display: grid;
+    grid-area: at;
+    font-size: 4vw;
+    font-weight: bold;
+}
+#articleDeets {
+    display: grid;
+    grid-area: ad;
+    font-size: 2.5vw;
+}
+#articleSnippet {
+    display: grid;
+    grid-area: as;
+    font-size: 3vw;
+}
+#articleThumb {
+    display: grid;
+    grid-area: ath;
 }

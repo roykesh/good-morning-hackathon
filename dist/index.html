@@ -35,12 +35,13 @@
         </script>
 
     <script id="news-template" type="text/x-handlebars-template">
-        <div class="card" id="news">
-                <div id="title">{{title}}</div>
-                <div id="text">{{snippet}}</div>
-                <iframe class="thumbnail" src="{{thumb}}"></iframe>
-            </div>
-        </script>
+        <div id="articleCard">
+            <p id="articleTitle">{{title}}</p>
+            <p id="articleDeets">{{source}} - {{author}} - {{pubDate}}</p>
+            <p id="articleSnippet">{{snippet}}</p>
+            <img id="articleThumb" src="{{thumb}}"></img>
+        </div>
+    </script>
 
 
     <script src="./moment/moment.js"></script>
