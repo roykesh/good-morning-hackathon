@@ -6,6 +6,7 @@ const dummyData = {
         sub_title: "Kate Hudson Reveales Everything",
         author: "Neville Longbottom",
         snippet: `Benjamin Barry is an advertising executive and ladies' man who, to win a big campaign, bets that he can make a woman fall in love with him in 10 days. Andie Anderson covers the "How To" beat for "Composure" magazine and is assigned to write an article on "How to Lose a Guy in 10 days."`,
+
         thumb: `https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/7966/article_aligned%401x.jpg`
     },
 
