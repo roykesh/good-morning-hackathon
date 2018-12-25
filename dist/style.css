@@ -1,0 +1,49 @@
+body {
+    background-color: #f5f6fa;
+    margin: 5px;
+    font-family: montserrat;
+}
+
+.card {
+    padding: 10px;
+    width: 90%;
+    border: 1px solid grey;
+    margin-bottom: 5px;
+    box-shadow: 3px 3px 3px #777;
+    display: grid;
+    grid-template-areas:
+        “a t” “b t”
+}
+
+.thumbnail {
+    align-self: center;
+
+    width: 186.6px;
+    height: 105px;
+    grid-area: t;
+}
+
+#songName {
+    grid-area: a;
+
+}
+
+#artist {
+    grid-area: b;
+}
+
+#time {
+    grid-area: a
+}
+
+#transMethod {
+    grid-area: b
+}
+
+#title {
+    grid-area: a
+}
+
+#text {
+    grid-area: b
+}
