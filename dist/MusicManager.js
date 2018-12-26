@@ -1,4 +1,4 @@
-class TempManager{
+class MusicManager{
     constructor(){
         this.playlist = []
         this.firstSong = {}
