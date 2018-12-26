@@ -18,7 +18,6 @@ body {
 
 .thumbnail {
     align-self: center;
-
     width: 186.6px;
     height: 105px;
     grid-area: t;
@@ -49,8 +48,12 @@ body {
     grid-area: b
 }
 
-/* from here onward is guy's css shit */
 
+#map {
+    height: 700px
+}
+
+/* from here onward is guy's css shit */
 #articleCard>p {
     margin: 0;
 }
@@ -89,5 +92,4 @@ body {
     grid-area: ath;
     max-width: 35vw;
 }
-
 /* here ends guy's css shit */

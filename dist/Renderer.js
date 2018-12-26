@@ -27,13 +27,19 @@ class Renderer {
         })
     }
 
+    // Fullpage map renderer
+    async FullMapRenderer(mapData) {
+        $('#card-container').empty()
+        initMap()
+    }
+
     // Main renderer
     // renderAll() {
     //     this.musicRenderer(songData)
     //     this.mapRenderer(mapData)
     //     this.newsRenderer(articleData)
-        // this.weatherRenderer()
-        // }
+    // this.weatherRenderer()
+    // }
 
     // Weather renderer
     // weatherRenderer(allCityData) {
