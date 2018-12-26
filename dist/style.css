@@ -49,6 +49,8 @@ body {
     grid-area: b
 }
 
+/* from here onward is guy's css shit */
+
 #articleCard>p {
     margin: 0;
 }
@@ -85,4 +87,7 @@ body {
 #articleThumb {
     display: grid;
     grid-area: ath;
+    max-width: 35vw;
 }
+
+/* here ends guy's css shit */
