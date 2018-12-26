@@ -18,6 +18,48 @@
 
     <div id="card-container"></div>
 
+    <!-- Map tag & geolocation backup -->
+    <div id="map"></div>
+    <script>
+        var map, infoWindow;
+        //  Map initialiser
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: pos,
+                zoom: 17}
+                );
+                // GeoLocation
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                 lat: position.coords.latitude,
+                 lng: position.coords.longitude
+            };
+            console.log(pos)
+            map.setCenter(pos);
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: 'You are here'
+            });
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+
     <script id="music-template" type="text/x-handlebars-template">
         <div class="card" id="music">
                 <div id="songName">{{name}}</div>
@@ -28,28 +70,26 @@
 
     <script id="commute-template" type="text/x-handlebars-template">
         <div class="card" id="commute">
-                <div id="time">from {{currentLocation}} to {{dest}}</div>
-                <div id="transMethod">will take {{timeToDest}} minutes via {{transMeth}}</div>
-                <iframe class="thumbnail" src="{{url}}" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-        </script>
+                <div id="time">{{dest}}</div>
+                <div id="transMethod">will take {{timeToDest}} minutes via {{transportMethod}}</div>
+                <iframe class="thumbnail" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3381.716974886247!2d34.766934485305974!3d32.04985139916169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sil!4v1545845171107" width="300" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>            </script>
 
     <script id="news-template" type="text/x-handlebars-template">
         <div class="card" id="news">
-                <div id="title">{{title}}</div>
-                <div id="text">{{snippet}}</div>
-                <iframe class="thumbnail" src="{{thumb}}"></iframe>
-            </div>
-        </script>
+                    <div id="title">{{title}}</div>
+                    <div id="text">{{snippet}}</div>
+                    <iframe class="thumbnail" src="{{thumb}}"></iframe>
+                </div>
+            </script>
 
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-vUHY5R_oBRZhvCcs1VDSET8WHVin7Ps"></script>
     <script src="./moment/moment.js"></script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="Renderer.js"></script>
     <script src="TBDManager.js"></script>
+    <script src="locationScript.js"></script>
     <script src="main.js"></script>
-
 </body>
 
 </html>

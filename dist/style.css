@@ -18,7 +18,6 @@ body {
 
 .thumbnail {
     align-self: center;
-
     width: 186.6px;
     height: 105px;
     grid-area: t;
@@ -47,4 +46,8 @@ body {
 
 #text {
     grid-area: b
+}
+
+#map {
+    height: 700px
 }
