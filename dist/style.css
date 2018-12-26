@@ -29,9 +29,7 @@ body {
 
 }
 
-#artist {
-    grid-area: b;
-}
+
 
 #time {
     grid-area: a
@@ -47,4 +45,26 @@ body {
 
 #text {
     grid-area: b
+}
+
+.controllers{
+grid-area: b;
+display:grid;
+grid-template-columns: 1fr 1fr;
+}
+
+#delete {
+    color: red;
+  
+    
+}
+
+#resultsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+}
+
+#searchThumb{
+    width: 90%
 }

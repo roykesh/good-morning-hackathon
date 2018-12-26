@@ -14,39 +14,59 @@
 
 <body>
 
-    <h1>G'Day</h1>
- 
-    <script type="text/javascript">
-        var tag = document.createElement('script');
-        tag.id = 'iframe-demo';
-        tag.src = 'https://www.youtube.com/iframe_api';
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    <h1>Good Morning</h1>
 
-        function onYouTubeIframeAPIReady() {
-            var player;
-            player = new YT.Player('player', {
-                videoId: 'M7lc1UVf-VE',
-                playerVars: { 'autoplay': 1, 'controls': 0 },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
-                    'onStateChange': onPlayerStateChange,
-                    'onError': onPlayerError
-                }
-            });
-        }
-        </script>
+   
 
     <div id="card-container"></div>
 
     <script id="music-template" type="text/x-handlebars-template">
         <div class="card" id="music">
                 <div id="songName">{{title}}</div>
-                <div id="artist">{{artist}}</div>
-                <iframe id="player" class="thumbnail" type="text/html" src="http://www.youtube.com/embed/{{id}}?enablejsapi=1&origin=http://example.com"></iframe>
+               <div class="controllers" >
+                   <i id="musicSettings" class="fas fa-sliders-h"></i>
+                   <i id="next" class="fas fa-forward"></i>
+                </div>
+                <iframe id="player" class="thumbnail" frameborder="0" type="text/html" allow="autoplay" src="http://www.youtube.com/embed/{{id}}?&autoplay=1&mute=1&enablejsapi=1"></iframe>
             </div>
         </script>
+
+    <script id="playlist-template" type="text/x-handlebars-template">
+            <div id="playlist">
+                    <i id="back" class="fas fa-chevron-left"></i>
+                <h1>playlist</h1>
+                    {{#each playlist}}
+                    <div class="song">
+                    <p id="title">{{title}}</p>
+                    <i id="play" class="fas fa-play-circle"></i>
+                    <i id="delete" class="fas fa-minus-circle"></i>
+                    </div>
+                {{/each}}
+                </div>
+            </script>
+
+            <script id="search-template" type="text/x-handlebars-template">
+                <p>Pick One:</p>
+                <div id="resultsContainer">
+               {{#each searchResults}}
+               <div id="{{id}}" class="songResult">
+                   <p>{{title}}</p>
+                   <img id="searchThumb" src="{{pic}}">
+               </div>
+               {{/each}}
+               </div>
+                </script>
+
+            <script id="music-template" type="text/x-handlebars-template">
+                <div class="card" id="music">
+                        <div id="songName">{{title}}</div>
+                       <div class="controllers" >
+                           <i id="musicSettings" class="fas fa-sliders-h"></i>
+                           <i id="next" class="fas fa-forward"></i>
+                        </div>
+                        <iframe id="player" class="thumbnail" frameborder="0" type="text/html" allow="autoplay" src="http://www.youtube.com/embed/{{id}}?&autoplay=1&mute=1&enablejsapi=1"></iframe>
+                    </div>
+                </script>
 
     <script id="commute-template" type="text/x-handlebars-template">
         <div class="card" id="commute">
