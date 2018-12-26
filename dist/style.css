@@ -24,12 +24,7 @@ body {
 }
 
 #songName {
-    grid-area: a;
-    
-}
-
-#artist {
-    grid-area: b;
+    grid-area: a;    
 }
 
 #time {
@@ -48,6 +43,27 @@ body {
     grid-area: b
 }
 
+.controllers{
+grid-area: b;
+display:grid;
+grid-template-columns: 1fr 1fr;
+}
+
+#delete {
+    color: red;
+  
+    
+}
+
+#resultsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+}
+
+#searchThumb{
+    width: 90%
+}
 
 #map {
     height: 700px
@@ -93,3 +109,4 @@ body {
     max-width: 35vw;
 }
 /* here ends guy's css shit */
+
