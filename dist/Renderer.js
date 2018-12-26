@@ -17,12 +17,14 @@ class Renderer {
         $('#card-container').append(newHTML);
     }
 
-    // News renderer
-    newsRenderer(articleData) {
+    // guy - needs this too
+    newsRenderer(articleArray) {
         let source = $('#news-template').html();
         let template = Handlebars.compile(source);
-        let newHTML = template(articleData);
-        $('#card-container').append(newHTML);
+        articleArray.forEach(function(a) {
+            let newHTML = template(a);
+            $('#card-container').append(newHTML);
+        })
     }
 
     // Fullpage map renderer

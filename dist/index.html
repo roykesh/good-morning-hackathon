@@ -62,34 +62,38 @@
 
     <script id="music-template" type="text/x-handlebars-template">
         <div class="card" id="music">
-                <div id="songName">{{name}}</div>
-                <div id="artist">{{artist}}</div>
-                <iframe class="thumbnail" src="{{url}}"></iframe>
-            </div>
-        </script>
+            <div id="songName">{{name}}</div>
+            <div id="artist">{{artist}}</div>
+            <iframe class="thumbnail" src="{{url}}"></iframe>
+        </div>
+    </script>
 
     <script id="commute-template" type="text/x-handlebars-template">
         <div class="card" id="commute">
+
                 <div id="time">{{dest}}</div>
                 <div id="transMethod">will take {{timeToDest}} minutes via {{transportMethod}}</div>
                 <iframe class="thumbnail" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3381.716974886247!2d34.766934485305974!3d32.04985139916169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sil!4v1545845171107" width="300" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>            </script>
 
     <script id="news-template" type="text/x-handlebars-template">
-        <div class="card" id="news">
-                    <div id="title">{{title}}</div>
-                    <div id="text">{{snippet}}</div>
-                    <iframe class="thumbnail" src="{{thumb}}"></iframe>
-                </div>
-            </script>
+        <div id="articleCard">
+            <p id="articleTitle">{{title}}</p>
+            <p id="articleDeets">{{source}} - {{author}} - {{pubDate}}</p>
+            <p id="articleSnippet">{{snippet}}</p>
+            <img id="articleThumb" src="{{thumb}}"></img>
+        </div>
+    </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-vUHY5R_oBRZhvCcs1VDSET8WHVin7Ps"></script>
     <script src="./moment/moment.js"></script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="Renderer.js"></script>
+    <script src="newsManager.js"></script>
     <script src="TBDManager.js"></script>
     <script src="locationScript.js"></script>
     <script src="main.js"></script>
+
 </body>
 
 </html>
