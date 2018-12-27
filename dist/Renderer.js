@@ -12,14 +12,18 @@ class Renderer {
     playlistRenderer(playlist) {
         let source = $('#playlist-template').html();
         let template = Handlebars.compile(source);
-        let newHTML = template({playlist});
+        let newHTML = template({
+            playlist
+        });
         $('#card-container').append(newHTML);
     }
 
-    searchRenderer(searchResults){
+    searchRenderer(searchResults) {
         let source = $('#search-template').html();
         let template = Handlebars.compile(source);
-        let newHTML = template({searchResults});
+        let newHTML = template({
+            searchResults
+        });
         $('#card-container').append(newHTML);
     }
 
@@ -35,7 +39,7 @@ class Renderer {
     newsRenderer(articleArray) {
         let source = $('#news-template').html();
         let template = Handlebars.compile(source);
-        articleArray.forEach(function(a) {
+        articleArray.forEach(function (a) {
             let newHTML = template(a);
             $('#card-container').append(newHTML);
         })
@@ -45,6 +49,10 @@ class Renderer {
     async FullMapRenderer(mapData) {
         $('#card-container').empty()
         initMap()
+        let source = $('#fullmap-template').html();
+        let template = Handlebars.compile(source);
+        let newHTML = template();
+        $('#card-container').append(newHTML);
     }
 
     // Main renderer
