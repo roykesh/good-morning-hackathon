@@ -29,7 +29,6 @@ class MusicManager {
 
 
     addSong(newTrack) {
-        // this.playlist.push(newTrack)
         $.post(`/song`, newTrack, function (response) {
             console.log(`Saved song`)
         })

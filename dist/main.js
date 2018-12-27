@@ -6,13 +6,11 @@ const newsmanager = new NewsManager() //guy's client side data manager
 
 const loadSong = async () => {
     await musicManager.getPlaylistDB()
-    console.log(musicManager.playlist)
     render.musicRenderer(musicManager.playlist[0])
 }
 
 const loadPlaylist = async () => {
     await musicManager.getPlaylistDB()
-    console.log(musicManager.playlist)
     render.playlistRenderer(musicManager.playlist)
 
 }
@@ -58,11 +56,8 @@ $(`#card-container`).on(`click`, `#back`, function () {
 
 $(`#card-container`).on(`click`, `#play`, function () {
     let title = $(this).closest(`.song`).find(`#title`).text()
-    console.log(title)
     let i = musicManager.playlist.findIndex(s => s.title === title)
-    console.log(i)
     musicManager.currentSong = i
-    console.log(musicManager.currentSong)
     $(`#card-container`).empty()
     render.musicRenderer(musicManager.playlist[i])
     getMap()
@@ -71,7 +66,6 @@ $(`#card-container`).on(`click`, `#play`, function () {
 
 $(`#card-container`).on(`click`, `#delete`, function () {
     let title = $(this).closest(`.song`).find(`#title`).text()
-    console.log(title)
     musicManager.removeSong(title)
     $(`#card-container`).empty()
     loadPlaylist()
