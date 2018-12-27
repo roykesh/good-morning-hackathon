@@ -6,14 +6,12 @@ body {
   position: relative;
   font-family: montserrat;
 }
-/* h1 {
-  display: inline-block;
-} */
-/* #settings-button {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-} */
+
+
+#gday{
+  text-align: center;
+
+}
 #card-container {
   display: grid;
   gap: 10px;
@@ -24,8 +22,20 @@ body {
   display: grid;
   grid-template-areas: "a t" "b t";
   padding: 0 5px;
-  box-shadow: 1px 1px 5px #e4e6f1;
+  box-shadow: 5px 5px 5px #e4e6f1;
 }
+
+/* .card {
+  padding: 10px;
+  width: 90%;
+  border: 1px solid grey;
+  margin-bottom: 5px;
+  box-shadow: 3px 3px 3px #777;
+  display: grid;
+  grid-template-areas:
+      "a t"
+      "b t";
+} */
 #card-container .card .thumbnail {
   align-self: center;
   width: 186.6px;
@@ -64,6 +74,12 @@ body {
   background-color: grey
 }
 
+#mapInput{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  width: 300px;
+}
+
 .controllers {
     grid-area: b;
     display: grid;
@@ -90,7 +106,7 @@ body {
   grid-template-columns: 5fr 3fr;
   grid-template-rows: 3fr 2fr 5fr;
   padding: 0 5px;
-  box-shadow: 1px 1px 5px #e4e6f1;
+  box-shadow: 5px 5px 10px #e4e6f1;
   background-color: var(--primary-color);
 }
 .articleCard .articleTitle {

@@ -6,9 +6,9 @@ const Source = require('../model/Source')
 
 router.post('/source', function(req, res) {
     let newSource = new Source({
-        name: `Haaretz`,
-        url: `http://www.haaretz.com/cmlink/1.4605102`,
-        checked: ""
+        name: `TheMarker`,
+        url: `http://www.themarker.com/cmlink/1.144`,
+        checked: "checked"
     }) 
     newSource.save()
     res.end()
@@ -33,7 +33,8 @@ router.get(`/articles/:source`,async function(req, res) {
             pubDate: feed.items[i].pubDate,
             link: feed.items[i].link,
             thumb: feed.items[i].enclosure.url,
-            snippet: feed.items[i].contentSnippet
+            snippet: feed.items[i].contentSnippet,
+            content: feed.items[i].content
             }
         articlesArray.push(tempObject)
     }    
