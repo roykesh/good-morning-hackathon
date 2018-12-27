@@ -1,4 +1,3 @@
-
 const render = new Renderer()
 const musicManager = new MusicManager()
 const newsmanager = new NewsManager() //guy's client side data manager
@@ -93,6 +92,8 @@ const getMap = function () {
     })
 }
 
+// Map controllers
+
 $('body').on('click', '#commute', function () {
     $.get(`/map`, function (mapData) {
         mapData.location = pos
@@ -108,6 +109,14 @@ $("body").on("click", "#update-sources", function() {
 //to be filled
 })
 
+$(`body`).on(`click`, `#back-map`, function () {
+    $(`#card-container`).empty()
+    $(`#map`).empty()
+    loadPage()
+})
+
+
+// load all
 const loadPage = () => {
     loadSong()
     getMap()
@@ -115,4 +124,3 @@ const loadPage = () => {
 }
 
 loadPage()
-
