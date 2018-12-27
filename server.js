@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 
-const mongoose = require(`mongoose`)
+
 mongoose.connect('mongodb://localhost/good-morning-hackathon', {useNewUrlParser: true})
 
 app.use('/', commuteAPI)
