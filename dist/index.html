@@ -18,7 +18,9 @@
 
 
 
-    <div id="card-container"></div>
+    <div id="card-container">
+
+    </div>
 
     <!-- Map tag & geolocation backup -->
     <div id="map"></div>
@@ -28,38 +30,39 @@
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: pos,
-                zoom: 17}
-                );
-                // GeoLocation
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                 lat: position.coords.latitude,
-                 lng: position.coords.longitude
-            };
-            console.log(pos)
-            map.setCenter(pos);
-            var marker = new google.maps.Marker({
-                position: pos,
-                map: map,
-                title: 'You are here'
-            });
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
+                zoom: 17
+            }
+            );
+            // GeoLocation
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    console.log(pos)
+                    map.setCenter(pos);
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        title: 'You are here'
+                    });
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
         }
-      }
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
     </script>
 
     <script id="music-template" type="text/x-handlebars-template">
@@ -74,6 +77,17 @@
             </div>
         </script>
 
+    <script id="next-template" type="text/x-handlebars-template">
+                    <div id="songName">{{title}}</div>
+                   <div class="controllers" >
+                       <i id="musicSettings" class="fas fa-sliders-h"></i>
+                       <i id="next" class="fas fa-forward"></i>
+                    </div>
+                    <iframe id="player" class="thumbnail" frameborder="0" type="text/html" allow="autoplay" src="http://www.youtube.com/embed/{{id}}?&autoplay=1&mute=1&enablejsapi=1"></iframe>
+               
+            </script>
+
+
 
     <script id="playlist-template" type="text/x-handlebars-template">
         <div id="playlist">
@@ -86,6 +100,9 @@
                     <i id="delete" class="fas fa-minus-circle"></i>
                     </div>
                 {{/each}}
+                <input id="songInput" type="text" placeholder="Add Song">
+                <button id="searchButton">Search</button>
+               
                 </div>
             </script>
 
