@@ -1,5 +1,5 @@
 class Renderer {
-    constructor() {}
+    constructor() { }
 
     // Music renderer
     musicRenderer(songData) {
@@ -8,18 +8,24 @@ class Renderer {
         let newHTML = template(songData);
         $('#card-container').append(newHTML);
     }
+    nextSong(song) {
+        let source = $('#next-template').html();
+        let template = Handlebars.compile(source);
+        let newHTML = template(song);
+        $('#music').append(newHTML);
+    }
 
     playlistRenderer(playlist) {
         let source = $('#playlist-template').html();
         let template = Handlebars.compile(source);
-        let newHTML = template({playlist});
+        let newHTML = template({ playlist });
         $('#card-container').append(newHTML);
     }
 
-    searchRenderer(searchResults){
+    searchRenderer(searchResults) {
         let source = $('#search-template').html();
         let template = Handlebars.compile(source);
-        let newHTML = template({searchResults});
+        let newHTML = template({ searchResults });
         $('#card-container').append(newHTML);
     }
 
@@ -35,7 +41,7 @@ class Renderer {
     newsRenderer(articleArray) {
         let source = $('#news-template').html();
         let template = Handlebars.compile(source);
-        articleArray.forEach(function(a) {
+        articleArray.forEach(function (a) {
             let newHTML = template(a);
             $('#card-container').append(newHTML);
         })
