@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    --primary-color: #f8f9ff;
+}
+body {
+    position: relative;
+    font-family: montserrat;
+}
+h1 {
+    display: inline-block;
+}
+#settings-button {
+    position: absolute;
+    right: 15px;
+    top:15px;
+}
+#card-container {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+    .card {
+        background-color: var(--primary-color);
+        display: grid;
+        grid-template-areas:
+        "a t"
+        "b t";
+        padding: 0 5px;
+        box-shadow: 1px 1px 5px #e4e6f1;
+        .thumbnail {
+            align-self: center;
+            width: 186.6px;
+            height: 105px;
+            grid-area: t;
+        }
+        #time {
+            grid-area: a
+        }
+        
+        #transMethod {
+            grid-area: b
+        }
+        #songName {
+            grid-area: a;    
+        }
+        .controllers{
+            grid-area: b;
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+#title {
+    grid-area: a
+}
+#text {
+    grid-area: b
+}
+#delete {
+    color: red;
+}
+#resultsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+}
+#searchThumb{
+    width: 90%
+}
+#map {
+    height: 700px
+}
+
+/* from here onward is guy's css shit */
+.articleCard {
+    display: grid;
+    grid-template-areas:
+    "at at"
+    "ad ath"
+    "as ath";
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: 3fr 2fr 5fr;
+    padding: 0 5px;
+    box-shadow: 1px 1px 5px #e4e6f1;
+    background-color: var(--primary-color);
+    .articleTitle {
+        display: grid;
+        grid-area: at;
+        font-size: 4vw;
+        font-weight: bold;
+    }
+    .articleDeets {
+        display: grid;
+        grid-area: ad;
+        font-size: 2.5vw;
+    }
+    .articleSnippet {
+        display: grid;
+        grid-area: as;
+        font-size: 3vw;
+    }
+    .articleThumb {
+        display: grid;
+        grid-area: ath;
+        max-width: 35vw;
+        justify-self: center;
+        align-self: end;
+    }
+}
+/* here ends guy's css shit */
+

@@ -41,12 +41,22 @@ class Renderer {
         })
     }
 
+    settingsRenderer(sources) {
+        $("#card-container").empty()
+        let source = $("#news-preferences-template").html()
+        let template = Handlebars.compile(source)
+        let newHTML = template({sources})
+        $("#news-preferences").append(newHTML)
+
+    }
+
     // Fullpage map renderer
     async FullMapRenderer(mapData) {
         $('#card-container').empty()
         initMap()
     }
 
+    
     // Main renderer
     // renderAll() {
     //     this.musicRenderer(songData)

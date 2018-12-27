@@ -1,9 +1,10 @@
-// Server setup
-
 const express = require('express')
 const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost/good-morning-hackathon', {useNewUrlParser: true})
 
 const commuteAPI = require('./server/routes/commuteAPI')
 const musicAPI = require('./server/routes/musicAPI')
