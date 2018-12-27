@@ -3,26 +3,22 @@ const render = new Renderer()
 const musicManager = new MusicManager()
 const newsmanager = new NewsManager() //guy's client side data manager
 
+// Corinne's updated code
 
-// const loadSong = async function () {
-//     await musicManager.getPlaylist()
-//     let i = musicManager.currentSong
-//     render.musicRenderer(musicManager.playlist[i])
-// }
 const loadSong = async () => {
     await musicManager.getPlaylistDB()
     console.log(musicManager.playlist)
     render.musicRenderer(musicManager.playlist[0])
 }
 
-const loadPlaylist = async () =>{
+const loadPlaylist = async () => {
     await musicManager.getPlaylistDB()
     console.log(musicManager.playlist)
     render.playlistRenderer(musicManager.playlist)
 
 }
 
-const handleSearch = async function(){
+const handleSearch = async function () {
     let input = $(`#songInput`).val()
     await musicManager.getSong(input)
     $(`#searchBar`).remove()
@@ -82,36 +78,7 @@ $(`#card-container`).on(`click`, `#delete`, function () {
     loadPlaylist()
 })
 
-// $(`#card-container`).on(`click`, `#delete`, function () {
-//     let title = $(this).closest(`.song`).find(`#title`).text()
-//     let id = musicManager.playlist.findIndex(s => s.title === title)
-//     musicManager.playlist.splice(id, 1)
-//     $(`#card-container`).empty()
-//     render.playlistRenderer(musicManager.playlist)
-//     $(`#card-container`).append(`<div id="searchBar">
-//  <input id="songInput" type="text" placeholder="Add Song">
-//  <button id="searchButton">Search</button>
-//  </div>`)
-// })
 
-// $(`#card-container`).on(`click`, `#searchButton`, async function () {
-//     let input = $(`#songInput`).val()
-//     await musicManager.getSong(input)
-//     $(`#searchBar`).remove()
-//     render.searchRenderer(musicManager.searchResults)
-// })
-
-
-// $(`#card-container`).on(`click`, `.songResult`, function () {
-//     let id = $(this).attr("id")
-//     let title = $(this).find(`p`).text()
-//     musicManager.addSong({
-//         id: id,
-//         title: title
-//     })
-//     $(`#card-container`).empty()
-//     render.playlistRenderer(musicManager.playlist)
-// })
 
 //guy's updated main getNews function
 const getNews = async function (numPerSource) {

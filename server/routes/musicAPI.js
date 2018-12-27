@@ -12,22 +12,22 @@ router.get(`/music/:song`, function (req, res) {
     })
 })
 
-router.get(`/playlist`, (req, res) =>{
-    Song.find({}).exec(function(err, songs){
-        res.send(songs)  
-    }) 
-   })
+router.get(`/playlist`, (req, res) => {
+    Song.find({}).exec(function (err, songs) {
+        res.send(songs)
+    })
+})
 
-router.post(`/song`, function(req, res){
-    let song = new Song (req.body)
+router.post(`/song`, function (req, res) {
+    let song = new Song(req.body)
     song.save()
     res.send(`${song} added to playlist`)
 })
 
-router.delete(`/music/:song`, function(req, res){
+router.delete(`/music/:song`, function (req, res) {
     let song = req.params.song
     console.log(song)
-    Song.findOneAndDelete({title:song}).exec()
+    Song.findOneAndDelete({ title: song }).exec()
     res.send(`${song} deleted from DB`)
 })
 
