@@ -24,7 +24,7 @@ body {
 }
 
 #songName {
-    grid-area: a;    
+    grid-area: a;
 }
 
 #time {
@@ -43,36 +43,33 @@ body {
     grid-area: b
 }
 
-.controllers{
-grid-area: b;
-display:grid;
-grid-template-columns: 1fr 1fr;
+.controllers {
+    grid-area: b;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 #delete {
     color: red;
-  
-    
+
+
 }
 
-#resultsContainer{
+#resultsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 3px;
 }
 
-#searchThumb{
+#searchThumb {
     width: 90%
-}
-
-#map {
-    height: 700px
 }
 
 /* from here onward is guy's css shit */
 #articleCard>p {
     margin: 0;
 }
+
 #articleCard {
     padding: 10px;
     width: 90%;
@@ -87,26 +84,108 @@ grid-template-columns: 1fr 1fr;
     grid-template-columns: 5fr 3fr;
     grid-template-rows: 3fr 2fr 5fr;
 }
+
 #articleTitle {
     display: grid;
     grid-area: at;
     font-size: 4vw;
     font-weight: bold;
 }
+
 #articleDeets {
     display: grid;
     grid-area: ad;
     font-size: 2.5vw;
 }
+
 #articleSnippet {
     display: grid;
     grid-area: as;
     font-size: 3vw;
 }
+
 #articleThumb {
     display: grid;
     grid-area: ath;
     max-width: 35vw;
 }
+
 /* here ends guy's css shit */
 
+/* Map CSS crap coming up */
+
+#map {
+    height: 700px
+}
+
+#description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+#infowindow-content .title {
+    font-weight: bold;
+}
+
+#infowindow-content {
+    display: none;
+}
+
+#map #infowindow-content {
+    display: inline;
+}
+
+.pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+}
+
+#pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+}
+
+.pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+}
+
+.pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+}
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}
+
+#title {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 6px 12px;
+}
+
+#target {
+    width: 345px;
+}

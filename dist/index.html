@@ -30,29 +30,84 @@
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: pos,
-                zoom: 17
-            }
-            );
-            // GeoLocation
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    console.log(pos)
-                    map.setCenter(pos);
-                    var marker = new google.maps.Marker({
-                        position: pos,
-                        map: map,
-                        title: 'You are here'
-                    });
-                }, function () {
-                    handleLocationError(true, infoWindow, map.getCenter());
+                zoom: 15}
+                );
+                // Add search box
+                var input = document.getElementById('pac-input');
+                var searchBox = new google.maps.places.SearchBox(input);
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                // Bias the SearchBox results towards current map's viewport.
+                map.addListener('bounds_changed', function() {
+                    searchBox.setBounds(map.getBounds());
                 });
+                var markers = [];
+                //Prediction selector
+                searchBox.addListener('places_changed', function() {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                return;
+                }
+
+                // Clear out the old markers.
+                markers.forEach(function(marker) {
+                marker.setMap(null);
+                });
+                markers = [];
+
+                // For each place, get the icon, name and location.
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function(place) {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
             } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+                // GeoLocation
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                 lat: position.coords.latitude,
+                 lng: position.coords.longitude
+            };
+            console.log(pos)
+            map.setCenter(pos);
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: 'You are here'
+            });
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+
             }
         }
 
@@ -75,10 +130,10 @@
                 </div>
                 <iframe id="player" class="thumbnail" frameborder="0" type="text/html" allow="autoplay" src="http://www.youtube.com/embed/{{id}}?&autoplay=1&mute=1&enablejsapi=1"></iframe>
             </div>
-        </script>
+    </script>
 
     <script id="next-template" type="text/x-handlebars-template">
-                    <div id="songName">{{title}}</div>
+        <div id="songName">{{title}}</div>
                    <div class="controllers" >
                        <i id="musicSettings" class="fas fa-sliders-h"></i>
                        <i id="next" class="fas fa-forward"></i>
@@ -102,8 +157,9 @@
                 <button id="searchButton">Search</button>
                
                 </div>
-            </script>
+    </script>
 
+    <!-- SEARCH TEMPLATE -->
     <script id="search-template" type="text/x-handlebars-template">
         <p>Pick One:</p>
                 <div id="resultsContainer">
@@ -114,15 +170,26 @@
                </div>
                {{/each}}
                </div>
-                </script>
+    </script>
 
+    <!-- MAP CARD TEMPLATE -->
     <script id="commute-template" type="text/x-handlebars-template">
         <div class="card" id="commute">
 
                 <div id="time">{{dest}}</div>
                 <div id="transMethod">will take {{timeToDest}} minutes via {{transportMethod}}</div>
-                <iframe class="thumbnail" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3381.716974886247!2d34.766934485305974!3d32.04985139916169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sil!4v1545845171107" width="300" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>            </script>
+                <iframe class="thumbnail" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3381.716974886247!2d34.766934485305974!3d32.04985139916169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sil!4v1545845171107" width="300" height="200" frameborder="0" style="border:0"></iframe>
+                
+            </div>
+    </script>
 
+    <!-- FULL  MAP TEMPLATE -->
+    <script id="fullmap-template" type="text/x-handlebars-template">
+        <i id="back-map" class="fas fa-chevron-left"></i>
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    </script>
+
+    <!-- NEWS TEMPLATE -->
     <script id="news-template" type="text/x-handlebars-template">
         <div id="articleCard">
             <p id="articleTitle">{{title}}</p>
@@ -132,7 +199,7 @@
         </div>
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-vUHY5R_oBRZhvCcs1VDSET8WHVin7Ps"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-vUHY5R_oBRZhvCcs1VDSET8WHVin7Ps&libraries=places"></script>
     <script src="./moment/moment.js"></script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>

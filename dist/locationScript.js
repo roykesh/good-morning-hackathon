@@ -8,6 +8,7 @@ function getLocation() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+
         });
         // watch position for route
         // navigator.geolocation.watchPosition(showPosition);

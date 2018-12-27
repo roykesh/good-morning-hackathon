@@ -16,4 +16,30 @@ router.get(`/map`, function (req, res) {
     res.send(mapData)
 })
 
+const apiKey = "71b5b5cd59004ae089d33355182308"
+let coords = "32.050224,34.766899"
+
+router.get('/weather/:location', (req, res) => {
+    request(`http://api.apixu.com/v1/current.json?key=${apiKey}&q=${req.params.location}`, (err, response) => {
+        console.log(`Getting weather from coordinates: ${req.params.location}`)
+        const parsedResponse = JSON.parse(response.body)
+        console.log(parsedResponse)
+        res.send(parsedResponse)
+    })
+})
+
+// router.post('/city', function (req, res) {
+//     console.log(req.body)
+//     let newCity = new City({
+//         name: req.body.name,
+//         updatedAt: req.body.updatedAt,
+//         temperature: req.body.temperature,
+//         condition: req.body.condition,
+//         conditionPic: req.body.conditionPic
+//     })
+//     newCity.save()
+//     res.end()
+// })
+
+
 module.exports = router
