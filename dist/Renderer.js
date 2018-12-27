@@ -8,13 +8,21 @@ class Renderer {
         let newHTML = template(songData);
         $('#card-container').append(newHTML);
     }
+    nextSong(song) {
+        let source = $('#next-template').html();
+        let template = Handlebars.compile(source);
+        let newHTML = template(song);
+        $('#music').append(newHTML);
+    }
 
     playlistRenderer(playlist) {
         let source = $('#playlist-template').html();
         let template = Handlebars.compile(source);
+
         let newHTML = template({
             playlist
         });
+
         $('#card-container').append(newHTML);
     }
 
@@ -24,6 +32,7 @@ class Renderer {
         let newHTML = template({
             searchResults
         });
+
         $('#card-container').append(newHTML);
     }
 
