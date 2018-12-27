@@ -1,21 +1,23 @@
 class NewsManager {
     constructor() {
         this.tempArticles = []
-        this.keys = []
+        this.sources = []
     }
 
-    async fetchKeys() {
+    async fetchSources() {
         let data = await $.get(`/sources`) 
-        this.keys = data
+        this.sources = data
     }
 
     async fetchNews(numPerSource) {
         this.tempArticles = []
-        await this.fetchKeys()
-        for (let k of this.keys) {
-            let anotherSource = await $.get(`/articles/${k}/?n=${numPerSource}`)
-            for (let a of anotherSource) {
-                this.tempArticles.push(a)
+        await this.fetchSources()
+        for (let o of this.sources) {
+            if (o.checked) {
+                let anotherSource = await $.get(`/articles/${o.name}/?n=${numPerSource}`)
+                for (let a of anotherSource) {
+                    this.tempArticles.push(a)
+                }
             }    
         }
     }

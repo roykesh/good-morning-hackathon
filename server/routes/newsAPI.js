@@ -2,52 +2,26 @@ const express = require('express')
 const router = express.Router()
 const Parser = require('rss-parser')
 const parser = new Parser()
+const Source = require('../model/Source')
 
-let sourcesData = {
-    vice: {
-        name: `VICE`,
-        url: `https://www.vice.com/en_us/rss`,
-        skeleton: {
-            authorPath: "creator",
-            titlePath: "title",
-            pubDatePath: "pubDate",
-            linkPath: "link",
-            thumbPath: ["enclosure", "url"],
-            snippetPath: "contentSnippet"
-        }
-    },
-    haaretz: {
-        name:`Haaretz`,
+router.post('/source', function(req, res) {
+    let newSource = new Source({
+        name: `Haaretz`,
         url: `http://www.haaretz.com/cmlink/1.4605102`,
-        skeleton: {
-            authorPath: "author",
-            titlePath: "title",
-            pubDatePath: "pubDate",
-            linkPath: "link",
-            thumbPath: ["enclosure", "url"],
-            snippetPath: "contentSnippet"
-        }
-    },
-    themarker: {
-        name: `TheMarker`,
-        url: `http://www.themarker.com/cmlink/1.144`,
-        skeleton: {
-            authorPath: "author",
-            titlePath: "title",
-            pubDatePath: "pubDate",
-            linkPath: "link",
-            thumbPath: ["enclosure", "url"],
-            snippetPath: "contentSnippet"
-        }
-    }
-}
+        checked: ""
+    }) 
+    newSource.save()
+    res.end()
+})
 
 router.get(`/sources`, function(req,res) {
-    res.send(Object.keys(sourcesData))
+    Source.find({}, function(err, sources) {
+        res.send(sources)
+    })
 })
 
 router.get(`/articles/:source`,async function(req, res) {
-    let sourceObject = sourcesData[req.params.source]
+    let sourceObject = await Source.findOne({name: `${req.params.source}`})
     let feed = await parser.parseURL(sourceObject.url)
     let articlesArray = []
     let tempObject
@@ -65,6 +39,5 @@ router.get(`/articles/:source`,async function(req, res) {
     }    
     res.send(articlesArray)
 })
-
 
 module.exports = router

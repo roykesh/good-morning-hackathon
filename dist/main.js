@@ -79,7 +79,7 @@ $(`#card-container`).on(`click`, `#delete`, function () {
 
 
 
-//guy's updated main getNews function
+
 const getNews = async function (numPerSource) {
     await newsmanager.fetchNews(numPerSource)
     render.newsRenderer(newsmanager.tempArticles)
@@ -99,6 +99,14 @@ $('body').on('click', '#commute', function () {
         mapData.location = pos
         render.FullMapRenderer(mapData)
     })
+})
+
+$("#settings-button").on("click", function() {
+    render.settingsRenderer(newsmanager.sources)
+})
+
+$("body").on("click", "#update-sources", function() {
+//to be filled
 })
 
 $(`body`).on(`click`, `#back-map`, function () {
