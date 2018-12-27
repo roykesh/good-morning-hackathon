@@ -1,19 +1,19 @@
 * {
-  margin: 0;
+  /* margin: 0; */
   --primary-color: #f8f9ff;
 }
 body {
   position: relative;
   font-family: montserrat;
 }
-h1 {
+/* h1 {
   display: inline-block;
-}
-#settings-button {
+} */
+/* #settings-button {
   position: absolute;
   right: 15px;
   top: 15px;
-}
+} */
 #card-container {
   display: grid;
   gap: 10px;
@@ -51,6 +51,17 @@ h1 {
 }
 #text {
     grid-area: b
+}
+#searchBox{
+  margin-top:5px;
+  border: 1px solid grey;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#searchButton{
+  justify-self: flex-end;
+  padding: 5px;
+  background-color: grey
 }
 
 .controllers {
@@ -174,13 +185,13 @@ h1 {
     border-color: #4d90fe;
 }
 
-#title {
+/* #title {
     color: #fff;
     background-color: #4d90fe;
     font-size: 25px;
     font-weight: 500;
     padding: 6px 12px;
-}
+} */
 
 #target {
     width: 345px;

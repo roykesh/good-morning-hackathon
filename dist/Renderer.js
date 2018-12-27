@@ -18,21 +18,14 @@ class Renderer {
     playlistRenderer(playlist) {
         let source = $('#playlist-template').html();
         let template = Handlebars.compile(source);
-
-        let newHTML = template({
-            playlist
-        });
-
+        let newHTML = template({playlist});
         $('#card-container').append(newHTML);
     }
 
     searchRenderer(searchResults) {
         let source = $('#search-template').html();
         let template = Handlebars.compile(source);
-        let newHTML = template({
-            searchResults
-        });
-
+        let newHTML = template({searchResults});
         $('#card-container').append(newHTML);
     }
 
